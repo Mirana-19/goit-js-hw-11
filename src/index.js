@@ -20,20 +20,12 @@ const lightbox = new SimpleLightbox('.photo-card a', {
 });
 
 refs.form.addEventListener('submit', handleForm);
-refs.loadMoreBtn.addEventListener('click', loadMoreImg);
+refs.loadMoreBtn.addEventListener('click', handleForm);
 
 function handleForm(e) {
   e.preventDefault();
 
-  page = 1;
-
-  searchImages(refs.input.value, page).then(renderGallery).catch(handleError);
-}
-
-function loadMoreImg(e) {
-  e.preventDefault();
-
-  page += 1;
+  e.target.nodeName === 'FORM' ? (page = 1) : (page += 1);
 
   searchImages(refs.input.value, page).then(renderGallery).catch(handleError);
 }
