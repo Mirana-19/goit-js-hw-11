@@ -19,6 +19,8 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  padding: 3px;
+  height: 60px;
 }
 
 .photo-card.gallery {
@@ -30,12 +32,6 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.info-item {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-}
-
 .search-form {
   display: flex;
   justify-content: center;
@@ -45,9 +41,9 @@
   border-radius: 5px;
 }
 
-img {
+/* img {
   object-fit: contain;
-}
+} */
 
 .loadMoreBtn {
   margin: auto;
