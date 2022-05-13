@@ -3,6 +3,7 @@ import Notiflix from 'notiflix';
 import searchImages from './components/search_images';
 import createGalleryMarkup from './components/create_gallery_markup';
 import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 let page = 1;
 
@@ -12,6 +13,11 @@ const refs = {
   gallery: document.querySelector('.gallery'),
   loadMoreBtn: document.querySelector('.loadMoreBtn'),
 };
+
+const lightbox = new SimpleLightbox('.photo-card a', {
+  captionDelay: 250,
+  captionsData: 'alt',
+});
 
 refs.form.addEventListener('submit', handleForm);
 refs.loadMoreBtn.addEventListener('click', loadMoreImg);
@@ -45,10 +51,6 @@ function handleError(error) {
     : Notiflix.Notify.failure(
         "We're sorry, but you've reached the end of search results.",
       );
-
-  var lightbox = new SimpleLightbox('.gallery a', {
-    /* options */
-  });
 }
 
 function renderGallery(response) {
@@ -61,7 +63,7 @@ function renderGallery(response) {
   }
 
   refs.loadMoreBtn.classList.remove('hidden');
-  console.log(response.hits.map(image => createGalleryMarkup(image)).join(''));
+
   page === 1
     ? (refs.gallery.innerHTML = response.hits
         .map(image => createGalleryMarkup(image))
@@ -71,8 +73,5 @@ function renderGallery(response) {
         response.hits.map(image => createGalleryMarkup(image)).join(''),
       );
 
-  const gallery = new SimpleLightbox('.gallery a', {
-    captionDelay: 250,
-    captionsData: 'alt',
-  });
+  lightbox.refresh();
 }
