@@ -22,11 +22,12 @@
 }
 
 .photo-card.gallery {
-  width: 300px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  text-align: center;
   margin-top: 30px;
+  text-align: center;
+  width: 300px;
+
   border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .info-item {
@@ -43,6 +44,6 @@
   background-color: #4267b2;
 }
 
-header {
-  position: relative;
+img {
+  object-fit: contain;
 }
